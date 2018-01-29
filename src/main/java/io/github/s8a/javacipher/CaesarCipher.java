@@ -3,9 +3,9 @@ package io.github.s8a.javacipher;
 
 /**
  * CaesarCipher
- * The Caesar cipher is a type of substitution cipher in which each 
- * letter in the plaintext is replaced by a letter some fixed number 
- * of positions down the alphabet.
+ * The Caesar cipher is a type of monoalphabetic substitution cipher 
+ * in which each letter in the plaintext is replaced by a letter 
+ * some fixed number of positions down the alphabet.
  */
 public class CaesarCipher {
 
@@ -18,6 +18,7 @@ public class CaesarCipher {
      */
     public static String encrypt(String text, int key) {
         StringBuilder sb = new StringBuilder();
+        key %= 26;
         for (char c : text.toCharArray()) {
             if (Character.isLetter(c)) {
                 int start = Character.isUpperCase(c) ? 'A' : 'a';
@@ -30,7 +31,6 @@ public class CaesarCipher {
         return sb.toString();
     }
 
-    
     /**
      * Decrypts text ciphered with a given Caesar shift.
      *

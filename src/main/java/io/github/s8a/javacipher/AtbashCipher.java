@@ -20,9 +20,10 @@ public class AtbashCipher {
         StringBuilder sb = new StringBuilder();
         for (char c : text.toCharArray()) {
             if (Character.isLetter(c)) {
-                int start = Character.isUpperCase(c) ? 'A' : 'a';
-                int newChar = ((c - start + 26) % 26) + start;
-                sb.append((char) newChar);
+                char start = Character.isUpperCase(c) ? 'A' : 'a';
+                char end = Character.isUpperCase(c) ? 'Z' : 'z';
+                char newChar = (char) (end - c + start);
+                sb.append(newChar);
             } else {
                 sb.append(c);
             }
@@ -30,7 +31,6 @@ public class AtbashCipher {
         return sb.toString();
     }
 
-    
     /**
      * Decrypts text ciphered with Atbash. Same as encrypting again.
      *
