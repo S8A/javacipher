@@ -13,7 +13,7 @@ public class AtbashCipher {
     /**
      * Encrypts text using the Atbash cipher.
      *
-     * @params text Text to encrypt.
+     * @param text Text to encrypt.
      * @return Encrypted text.
      */
     public static String encrypt(String text) {
@@ -34,7 +34,7 @@ public class AtbashCipher {
     /**
      * Decrypts text ciphered with Atbash. Same as encrypting again.
      *
-     * @params text Text to decrypt.
+     * @param text Text to decrypt.
      * @return Decrypted text.
      */
     public static String decrypt(String text) {

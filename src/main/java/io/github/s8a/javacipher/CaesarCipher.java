@@ -9,20 +9,21 @@ package io.github.s8a.javacipher;
  */
 public class CaesarCipher {
 
+    private static final int ALPHABET_LENGTH = 26;
+
     /**
      * Encrypts text using the Caesar cipher with the given key.
      *
-     * @params text Text to encrypt.
-     * @params key Number of positions to shift down the alphabet.
+     * @param text Text to encrypt.
+     * @param key Number of positions to shift down the alphabet.
      * @return Encrypted text.
      */
     public static String encrypt(String text, int key) {
         StringBuilder sb = new StringBuilder();
-        key %= 26;
         for (char c : text.toCharArray()) {
             if (Character.isLetter(c)) {
                 int start = Character.isUpperCase(c) ? 'A' : 'a';
-                int newChar = ((c + key - start) % 26) + start;
+                int newChar = ((c - start + key) % 26) + start;
                 sb.append((char) newChar);
             } else {
                 sb.append(c);
@@ -34,8 +35,8 @@ public class CaesarCipher {
     /**
      * Decrypts text ciphered with a given Caesar shift.
      *
-     * @params text Text to decrypt.
-     * @params key Number of positions to shift up the alphabet.
+     * @param text Text to decrypt.
+     * @param key Number of positions to shift up the alphabet.
      * @return Decrypted text.
      */
     public static String decrypt(String text, int key) {

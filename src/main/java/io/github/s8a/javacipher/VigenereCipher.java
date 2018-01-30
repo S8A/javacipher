@@ -14,8 +14,8 @@ public class VigenereCipher {
     /**
      * Encrypts text using the Vigenere cipher with a given keyword.
      *
-     * @params text Text to encrypt.
-     * @params keyword Keyword used to encrypt the text.
+     * @param text Text to encrypt.
+     * @param keyword Keyword used to encrypt the text.
      * @return Decrypted text.
      */
     public static String encrypt(String text, String keyword) {
@@ -25,8 +25,8 @@ public class VigenereCipher {
     /**
      * Decrypts text using the Vigenere cipher with a given keyword.
      *
-     * @params text Text to encrypt.
-     * @params keyword Keyword used to encrypt the text.
+     * @param text Text to encrypt.
+     * @param keyword Keyword used to encrypt the text.
      * @return Decrypted text.
      */
     public static String decrypt(String text, String keyword) {
@@ -36,13 +36,13 @@ public class VigenereCipher {
     /** Algorithm behind the encrypt and decrypt methods. */
     private static String algorithm(String text, String keyword, CipherMode m) {
         StringBuilder sb = new StringBuilder();
-        int count = 0;
+        int count = 0; // Index of current keyword character
         for (char c : text.toCharArray()) {
             char currentKey = keyword.toLowerCase()
                                      .charAt(count++ % keyword.length());
             if (Character.isLetter(c)) {
                 String charStr = Character.toString(c);
-                int shift = (int) currentKey - 'a';
+                int shift = (int) currentKey - 'a'; // Current key position
                 String newChar = m.equals(CipherMode.ENCRYPT)
                                  ? CaesarCipher.encrypt(charStr, shift)
                                  : CaesarCipher.decrypt(charStr, shift);
