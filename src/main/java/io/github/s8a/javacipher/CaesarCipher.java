@@ -13,6 +13,7 @@ public class CaesarCipher {
 
     /**
      * Encrypts text using the Caesar cipher with the given key.
+     * Non-letter characters are ignored.
      *
      * @param text Text to encrypt.
      * @param key Number of positions to shift down the alphabet.
@@ -22,9 +23,7 @@ public class CaesarCipher {
         StringBuilder sb = new StringBuilder();
         for (char c : text.toCharArray()) {
             if (Character.isLetter(c)) {
-                int start = Character.isUpperCase(c) ? 'A' : 'a';
-                int newChar = ((c - start + key) % 26) + start;
-                sb.append((char) newChar);
+                sb.append(shift(c, key));
             } else {
                 sb.append(c);
             }
@@ -34,6 +33,7 @@ public class CaesarCipher {
 
     /**
      * Decrypts text ciphered with a given Caesar shift.
+     * Non-letter characters are ignored.
      *
      * @param text Text to decrypt.
      * @param key Number of positions to shift up the alphabet.
@@ -42,5 +42,19 @@ public class CaesarCipher {
     public static String decrypt(String text, int key) {
         return encrypt(text, -key);
     }
-    
+
+    /**
+     * Shifts a character a fixed number of places down the alphabet.
+     */
+    static char shift(char c, int key) {
+        // Handle key values >=ALPHABET_LENGTH 
+        key %= ALPHABET_LENGTH;
+        char start = Character.isUpperCase(c) ? 'A' : 'a';
+        // Shift down to 0-25 for a-z
+        char shifted = (char) (c - start);
+        // Handle wrap-around for negative values:
+        shifted = (char) ((shifted + key + ALPHABET_LENGTH) % ALPHABET_LENGTH);
+        return (char) (shifted + start);
+    }
+
 }

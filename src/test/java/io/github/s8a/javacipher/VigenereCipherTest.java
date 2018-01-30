@@ -35,11 +35,11 @@ public class VigenereCipherTest extends TestCase {
         String smallLemon = "lemon";
         String crazyLemon = "LeMOn";
         String lemonAttack = "LXFOPVEFRNHR1234/(";
-        assertEquals(VigenereCipher.encrypt(attack, lemon), lemonAttack);
-        assertEquals(VigenereCipher.encrypt(attack, smallLemon), lemonAttack);
-        assertEquals(VigenereCipher.encrypt(attack, crazyLemon), lemonAttack);
-        assertEquals(VigenereCipher.decrypt(lemonAttack, lemon), attack);
-        assertEquals(VigenereCipher.decrypt(lemonAttack, smallLemon), attack);
-        assertEquals(VigenereCipher.decrypt(lemonAttack, crazyLemon), attack);
+        assertEquals(lemonAttack, VigenereCipher.encrypt(attack, lemon));
+        assertEquals(lemonAttack, VigenereCipher.encrypt(attack, smallLemon));
+        assertEquals(lemonAttack, VigenereCipher.encrypt(attack, crazyLemon));
+        assertEquals(attack, VigenereCipher.decrypt(lemonAttack, lemon));
+        assertEquals(attack, VigenereCipher.decrypt(lemonAttack, smallLemon));
+        assertEquals(attack, VigenereCipher.decrypt(lemonAttack, crazyLemon));
     }
 }

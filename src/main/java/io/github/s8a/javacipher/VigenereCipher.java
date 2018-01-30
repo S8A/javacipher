@@ -19,7 +19,7 @@ public class VigenereCipher {
      * @return Decrypted text.
      */
     public static String encrypt(String text, String keyword) {
-        return algorithm(text, keyword, CipherMode.ENCRYPT);
+        return cipher(text, keyword, CipherMode.ENCRYPT);
     }
 
     /**
@@ -30,23 +30,24 @@ public class VigenereCipher {
      * @return Decrypted text.
      */
     public static String decrypt(String text, String keyword) {
-        return algorithm(text, keyword, CipherMode.DECRYPT);
+        return cipher(text, keyword, CipherMode.DECRYPT);
     }
 
-    /** Algorithm behind the encrypt and decrypt methods. */
-    private static String algorithm(String text, String keyword, CipherMode m) {
+    /**
+     * Applies the Vigenere cipher algorithm to encrypt or decrypt.
+     */
+    private static String cipher(String text, String keyword, CipherMode m) {
         StringBuilder sb = new StringBuilder();
         int count = 0; // Index of current keyword character
         for (char c : text.toCharArray()) {
-            char currentKey = keyword.toLowerCase()
-                                     .charAt(count++ % keyword.length());
+            char currentKey = keyword.toLowerCase().charAt(
+                    count++ % keyword.length()); // Handle wrap around keyword
             if (Character.isLetter(c)) {
-                String charStr = Character.toString(c);
-                int shift = (int) currentKey - 'a'; // Current key position
-                String newChar = m.equals(CipherMode.ENCRYPT)
-                                 ? CaesarCipher.encrypt(charStr, shift)
-                                 : CaesarCipher.decrypt(charStr, shift);
-                sb.append(newChar);
+                int shift = (int) currentKey - 'a'; // Current key ordinal
+                char shifted = m.equals(CipherMode.ENCRYPT)
+                               ? CaesarCipher.shift(c, shift)
+                               : CaesarCipher.shift(c, -shift);
+                sb.append(shifted);
             } else {
                 sb.append(c);
             }

@@ -32,15 +32,15 @@ public class CaesarCipherTest extends TestCase {
     public void testApp() {
         String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890,.-/*()=?";
         String rot13 = "NOPQRSTUVWXYZABCDEFGHIJKLM1234567890,.-/*()=?";
-        String shift11 = "KLMNOPQRSTUVWXYZABCDEFGHIJ1234567890,.-/*()=?";
-        String shift22 = "VWXYZABCDEFGHIJKLMNOPQRSTU1234567890,.-/*()=?";
-        assertEquals(CaesarCipher.encrypt(alphabet, 0), alphabet);
-        assertEquals(CaesarCipher.encrypt(alphabet, 13), rot13);
-        assertEquals(CaesarCipher.encrypt(alphabet, 11), shift11);
-        assertEquals(CaesarCipher.encrypt(alphabet, 22), shift22);
-        assertEquals(CaesarCipher.decrypt(rot13, 13), alphabet);
-        assertEquals(CaesarCipher.decrypt(rot13, 0), rot13);
-        assertEquals(CaesarCipher.decrypt(shift11, 11), alphabet);
-        assertEquals(CaesarCipher.decrypt(shift22, 22), alphabet);
+        String shift11 = "LMNOPQRSTUVWXYZABCDEFGHIJK1234567890,.-/*()=?";
+        String shift22 = "WXYZABCDEFGHIJKLMNOPQRSTUV1234567890,.-/*()=?";
+        assertEquals(alphabet, CaesarCipher.encrypt(alphabet, 0));
+        assertEquals(rot13, CaesarCipher.encrypt(alphabet, 13));
+        assertEquals(shift11, CaesarCipher.encrypt(alphabet, 11));
+        assertEquals(shift22, CaesarCipher.encrypt(alphabet, 22));
+        assertEquals(alphabet, CaesarCipher.decrypt(rot13, 13));
+        assertEquals(rot13, CaesarCipher.decrypt(rot13, 0));
+        assertEquals(alphabet, CaesarCipher.decrypt(shift11, 11));
+        assertEquals(alphabet, CaesarCipher.decrypt(shift22, 22));
     }
 }

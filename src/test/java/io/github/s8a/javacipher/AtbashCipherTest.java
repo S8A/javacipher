@@ -34,9 +34,9 @@ public class AtbashCipherTest extends TestCase {
         String omegachi = "ZYXWVUTSRQPONMLKJIHGFEDCBA1234567890,.-/*()=?";
         String lowerAlphabet = alphabet.toLowerCase();
         String lowerOmegachi = omegachi.toLowerCase();
-        assertEquals(AtbashCipher.encrypt(alphabet), omegachi);
-        assertEquals(AtbashCipher.decrypt(omegachi), alphabet);
-        assertEquals(AtbashCipher.encrypt(lowerAlphabet), lowerOmegachi);
-        assertEquals(AtbashCipher.decrypt(lowerOmegachi), lowerAlphabet);
+        assertEquals(omegachi, AtbashCipher.encrypt(alphabet));
+        assertEquals(alphabet, AtbashCipher.decrypt(omegachi));
+        assertEquals(lowerOmegachi, AtbashCipher.encrypt(lowerAlphabet));
+        assertEquals(lowerAlphabet, AtbashCipher.decrypt(lowerOmegachi));
     }
 }
