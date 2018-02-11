@@ -2,7 +2,6 @@ package io.github.s8a.javacipher;
 
 
 /**
- * VigenereCipher
  * The Vigenere cipher is type of polyalphabetic substitution cipher 
  * that encrypts plaintext using a series of interwoven Caesar 
  * ciphers based on the letters of a keyword.

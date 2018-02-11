@@ -2,7 +2,6 @@ package io.github.s8a.javacipher;
 
 
 /**
- * AtbashCipher
  * The Atbash cipher is a type of monoalphabetic cipher formed by 
  * taking the alphabet and mapping it to its reverse, so that the 
  * first letter becomes the last letter, the second letter becomes 

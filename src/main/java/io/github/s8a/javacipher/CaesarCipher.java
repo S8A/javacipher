@@ -2,7 +2,6 @@ package io.github.s8a.javacipher;
 
 
 /**
- * CaesarCipher
  * The Caesar cipher is a type of monoalphabetic substitution cipher 
  * in which each letter in the plaintext is replaced by a letter 
  * some fixed number of positions down the alphabet.
