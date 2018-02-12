@@ -19,7 +19,7 @@ public class JavaCipherGui extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getClassLoader()
                                       .getResource("JavaCipherGui.fxml"));
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, 800, 500);
         stage.setTitle("JavaCipher");
         stage.setScene(scene);
         stage.show();
