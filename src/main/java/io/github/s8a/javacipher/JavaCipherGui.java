@@ -1,6 +1,8 @@
 package io.github.s8a.javacipher;
 
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,8 +19,10 @@ public class JavaCipherGui extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getClassLoader()
-                                      .getResource("JavaCipherGui.fxml"));
+        URL fxml = getClass().getClassLoader().getResource("JavaCipherGui.fxml");
+        ResourceBundle bundle = ResourceBundle.getBundle("JavaCipherGui");
+
+        Parent root = FXMLLoader.load(fxml, bundle);
         Scene scene = new Scene(root, 800, 500);
         stage.setTitle("JavaCipher");
         stage.setScene(scene);

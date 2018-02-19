@@ -7,17 +7,17 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.collections.*?>
 
-<SplitPane dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="io.github.s8a.javacipher.JavaCipherGuiController">
+<SplitPane dividerPositions="0.5" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.s8a.javacipher.JavaCipherGuiController">
   <items>
     <TabPane minWidth="300.0" prefWidth="400.0" tabClosingPolicy="UNAVAILABLE">
       <tabs>
-        <Tab closable="false" text="Atbash Cipher">
+        <Tab closable="false" text="%tab.atbash">
           <content>
-            <VBox spacing="10.0">
+            <VBox alignment="CENTER_LEFT" spacing="10.0">
               <children>
-                <Label text="Text:" />
-                <TextArea fx:id="atbashText" prefHeight="200.0" prefWidth="200.0" />
-                <Button text="Execute" textAlignment="CENTER" onAction="#executeAtbashCipher" />
+                <Label text="%label.text" />
+                <TextArea fx:id="atbashText" VBox.vgrow="ALWAYS" />
+                <Button onAction="#executeAtbashCipher" text="%button.execute" textAlignment="CENTER" />
               </children>
               <padding>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -25,99 +25,93 @@
             </VBox>
           </content>
         </Tab>
-        <Tab closable="false" text="Caesar Cipher">
+        <Tab closable="false" text="%tab.caesar">
           <content>
-            <VBox spacing="10.0">
+            <GridPane hgap="5.0" vgap="5.0" VBox.vgrow="ALWAYS">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" percentWidth="30.0" />
+                <ColumnConstraints hgrow="SOMETIMES" percentWidth="70.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
               <children>
-                <GridPane hgap="5.0" vgap="5.0">
-                  <columnConstraints>
-                    <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0" />
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  </columnConstraints>
-                  <rowConstraints>
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  </rowConstraints>
-                  <children>
-                    <Label text="Mode:" textAlignment="RIGHT" />
-                    <Label text="Key:" textAlignment="RIGHT" GridPane.rowIndex="1" />
-                    <ChoiceBox fx:id="caesarCipherMode" prefWidth="150.0" GridPane.columnIndex="1">
-                      <items>
-                        <FXCollections fx:factory="observableArrayList">
-                          <String fx:value="Encrypt" />
-                          <String fx:value="Decrypt" />
-                        </FXCollections>
-                      </items>
-                    </ChoiceBox>
-                    <Spinner fx:id="caesarKey" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                      <valueFactory>
-                        <SpinnerValueFactory.IntegerSpinnerValueFactory min="0" max="25"/>
-                      </valueFactory>
-                    </Spinner>
-                  </children>
-                </GridPane>
-                <Label text="Text:" />
-                <TextArea fx:id="caesarText" prefHeight="200.0" prefWidth="200.0" />
-                <Button text="Execute" textAlignment="CENTER" onAction="#executeCaesarCipher" />
+                <Label text="%label.mode" textAlignment="RIGHT" GridPane.halignment="RIGHT" />
+                <Label text="%label.key" textAlignment="RIGHT" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                <ChoiceBox fx:id="caesarCipherMode" GridPane.columnIndex="1">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="%mode.encrypt" />
+                      <String fx:value="%mode.decrypt" />
+                    </FXCollections>
+                  </items>
+                </ChoiceBox>
+                <Spinner fx:id="caesarKey" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <valueFactory>
+                    <SpinnerValueFactory.IntegerSpinnerValueFactory max="25" min="0" />
+                  </valueFactory>
+                </Spinner>
+                <Label text="%label.text" GridPane.rowIndex="2" />
+                <TextArea fx:id="caesarText" GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS" />
+                <Button onAction="#executeCaesarCipher" text="%button.execute" textAlignment="CENTER" GridPane.rowIndex="4" />
               </children>
               <padding>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
               </padding>
-            </VBox>
+            </GridPane>
           </content>
         </Tab>
-        <Tab closable="false" text="Vigenere Cipher">
+        <Tab closable="false" text="%tab.vigenere">
           <content>
-            <VBox spacing="10.0">
+            <GridPane hgap="5.0" vgap="5.0" VBox.vgrow="ALWAYS">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" percentWidth="30.0" />
+                <ColumnConstraints hgrow="SOMETIMES" percentWidth="70.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
               <children>
-                <GridPane hgap="5.0" vgap="5.0">
-                  <columnConstraints>
-                    <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="50.0" />
-                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  </columnConstraints>
-                  <rowConstraints>
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                  </rowConstraints>
-                  <children>
-                    <Label text="Mode:" textAlignment="RIGHT" />
-                    <Label text="Key:" textAlignment="RIGHT" GridPane.rowIndex="1" />
-                    <ChoiceBox fx:id="vigenereCipherMode" prefWidth="150.0" GridPane.columnIndex="1">
-                      <items>
-                        <FXCollections fx:factory="observableArrayList">
-                          <String fx:value="Encrypt" />
-                          <String fx:value="Decrypt" />
-                        </FXCollections>
-                      </items>
-                    </ChoiceBox>
-                    <TextField fx:id="vigenereKeyword" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  </children>
-                </GridPane>
-                <Label text="Text:" />
-                <TextArea fx:id="vigenereText" prefHeight="200.0" prefWidth="200.0" />
-                <Button text="Execute" textAlignment="CENTER" onAction="#executeVigenereCipher" />
+                <Label text="%label.mode" textAlignment="RIGHT" GridPane.halignment="RIGHT" />
+                <Label text="%label.keyword" textAlignment="RIGHT" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                <ChoiceBox fx:id="vigenereCipherMode" GridPane.columnIndex="1">
+                  <items>
+                    <FXCollections fx:factory="observableArrayList">
+                      <String fx:value="%mode.encrypt" />
+                      <String fx:value="%mode.decrypt" />
+                    </FXCollections>
+                  </items>
+                </ChoiceBox>
+                <TextField fx:id="vigenereKeyword" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label text="%label.text" GridPane.rowIndex="2" />
+                <TextArea fx:id="vigenereText" GridPane.columnSpan="2" GridPane.rowIndex="3" GridPane.vgrow="ALWAYS" />
+                <Button onAction="#executeVigenereCipher" text="%button.execute" textAlignment="CENTER" GridPane.rowIndex="4" />
               </children>
               <padding>
                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
               </padding>
-            </VBox>
+            </GridPane>
           </content>
         </Tab>
       </tabs>
     </TabPane>
-    <BorderPane minWidth="300.0" prefHeight="400.0">
-      <top>
-        <Label text="Results:" textAlignment="CENTER" BorderPane.alignment="CENTER" />
-      </top>
-      <center>
-        <TextArea fx:id="resultsText" editable="false" prefHeight="300.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
-      </center>
-      <bottom>
-        <Button fx:id="clearResultsButton" text="Clear" BorderPane.alignment="CENTER" onAction="#clearResults" />
-      </bottom>
-      <padding>
-        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-      </padding>
-    </BorderPane>
+      <VBox spacing="5.0">
+        <children>
+          <Label text="%label.results" textAlignment="CENTER" />
+          <TextArea fx:id="resultsText" editable="false" prefHeight="400.0" prefWidth="300.0" VBox.vgrow="ALWAYS" />
+          <Button fx:id="clearResultsButton" onAction="#clearResults" text="%button.clear" />
+        </children>
+        <padding>
+          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+        </padding>
+      </VBox>
   </items>
 </SplitPane>
