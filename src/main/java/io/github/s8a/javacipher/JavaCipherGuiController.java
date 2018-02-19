@@ -4,10 +4,11 @@ package io.github.s8a.javacipher;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Toggle;
+import javafx.scene.control.ToggleGroup;
 
 
 /**
@@ -21,14 +22,14 @@ public class JavaCipherGuiController {
     private TextArea atbashText;
 
     @FXML
-    private ChoiceBox<String> caesarCipherMode;
+    private ToggleGroup caesarCipherMode;
     @FXML
     private Spinner<Integer> caesarKey;
     @FXML
     private TextArea caesarText;
 
     @FXML
-    private ChoiceBox<String> vigenereCipherMode;
+    private ToggleGroup vigenereCipherMode;
     @FXML
     private TextField vigenereKeyword;
     @FXML
@@ -58,12 +59,13 @@ public class JavaCipherGuiController {
     protected void executeCaesarCipher(ActionEvent e) {
         int key = caesarKey.getValue();
         String text = caesarText.getText();
+        Toggle mode = caesarCipherMode.getSelectedToggle();
 
-        switch (caesarCipherMode.getValue()) {
-            case "Encrypt":
+        switch (mode.getUserData().toString()) {
+            case "encrypt":
                 appendResult(CaesarCipher.encrypt(text, key));
                 break;
-            case "Decrypt":
+            case "decrypt":
                 appendResult(CaesarCipher.decrypt(text, key));
                 break;
         }
@@ -77,12 +79,13 @@ public class JavaCipherGuiController {
     protected void executeVigenereCipher(ActionEvent e) {
         String keyword = vigenereKeyword.getText();
         String text = vigenereText.getText();
+        Toggle mode = vigenereCipherMode.getSelectedToggle();
 
-        switch (vigenereCipherMode.getValue()) {
-            case "Encrypt":
+        switch (mode.getUserData().toString()) {
+            case "encrypt":
                 appendResult(VigenereCipher.encrypt(text, keyword));
                 break;
-            case "Decrypt":
+            case "decrypt":
                 appendResult(VigenereCipher.decrypt(text, keyword));
                 break;
         }
