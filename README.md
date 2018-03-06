@@ -8,7 +8,9 @@ Tool for encrypting and decrypting text using various classical ciphers.
 - Graphical user interface using JavaFX. GUI structure is defined in a FXML 
   file, separating presentation from program logic.
 - Multiplatform: Runs on any operating system with Java 8 installed.
-- TODO: Internationalisation.
+- Localised: The GUI is currently available in English and Spanish, selected 
+  by the user's system. You can submit your own translations as a simple 
+  resource file (see directory tree).
 
 
 ## Download

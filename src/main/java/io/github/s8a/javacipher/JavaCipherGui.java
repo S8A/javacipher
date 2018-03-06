@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.image.Image;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -19,13 +20,17 @@ public class JavaCipherGui extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        URL fxml = getClass().getClassLoader().getResource("JavaCipherGui.fxml");
+        ClassLoader loader = getClass().getClassLoader();
+
+        URL fxml = loader.getResource("JavaCipherGui.fxml");
         ResourceBundle bundle = ResourceBundle.getBundle("JavaCipherGui");
 
         Parent root = FXMLLoader.load(fxml, bundle);
         Scene scene = new Scene(root, 800, 500);
         stage.setTitle("JavaCipher");
         stage.setScene(scene);
+        stage.getIcons().add(new Image(
+                loader.getResourceAsStream("javacipher.png")));
         stage.show();
     }
 
